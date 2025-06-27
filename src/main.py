@@ -16,7 +16,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://urljourney.netlify.app/"],  # Replace Netlify URL later
+    allow_origins=["https://urljourney.netlify.app/","*"],  # Replace Netlify URL later
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
