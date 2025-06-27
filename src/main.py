@@ -58,6 +58,9 @@ def get_server_name(headers: dict, url: str) -> str:
     """Enhanced server identification for Akamai vs. AEM (Apache) based on headers and IP."""
     headers = {k.lower(): v for k, v in headers.items()}  # Normalize header keys
 
+    if "cache-control" in headers:
+        return "Apache (AEM)"  
+        
     # Check Server header
     server_value = headers.get("server", "").lower()
     if server_value:
