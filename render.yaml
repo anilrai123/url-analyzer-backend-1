@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: url-analyzer-backend
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && playwright install chromium
+    startCommand: python src/main.py
+    autoDeploy: true
+    healthCheckPath: /test  # Use /test endpoint
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.0
+      - key: PLAYWRIGHT_BROWSERS_PATH  # Ensure Chromium is installed correctly
+        value: /home/user/.cache/ms-playwright  # Render’s writable path
